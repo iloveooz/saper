@@ -9,11 +9,12 @@ Colors are used instead of numeric fields
 
 RED - mine  (bomb)  
 
-0 - White  (empty cell)
+-1 - Gray  (closed cell)
+ 0 - White (empty cell)
 
-1 - Gray   (near one bomb)  
-2 - Green  (near two bombs)  
-3 - Blue   (near three bombs)  
+1 - Green  (near one bomb)  
+2 - Blue   (near two bombs)  
+3 - Pink   (near three bombs)  
 4 - Yellow (near four bombs)  
 5 - Orange (near five bombs)  
 6 - Brown  (near six bombs)  
