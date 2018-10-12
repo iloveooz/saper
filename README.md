@@ -9,8 +9,8 @@ Colors are used instead of numeric fields
 
 RED - mine  (bomb)  
 
--1 - Gray  (closed cell)
- 0 - White (empty cell)
+-1 - Gray  (closed cell)  
+ 0 - White (empty cell)  
 
 1 - Green  (near one bomb)  
 2 - Blue   (near two bombs)  

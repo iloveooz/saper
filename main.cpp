@@ -3,6 +3,8 @@
 	#include <iostream>
 	#include <ctime>
 	
+	#include <SFML/Graphics.hpp>
+	
 	#define MINES 10
 	#define BOMB 9
 	
@@ -63,5 +65,42 @@
 		}
 		
 		std::cout << std::endl;
+		
+		sf::RenderWindow window(sf::VideoMode((XF * 100) + (XF * 10), (YF * 100) + (YF * 10)), "SAPER!");
+
+		sf::RectangleShape rectangle[XF][YF];
+		for (int m = 0; m < XF; m++)
+			for (int n = 0; n < YF; n++) {		
+				rectangle[m][n].setSize(sf::Vector2f(100, 100));
+				if (field[m][n] == 0) rectangle[m][n].setFillColor(sf::Color::White);
+				if (field[m][n] == 1) rectangle[m][n].setFillColor(sf::Color::Green);
+				if (field[m][n] == 2) rectangle[m][n].setFillColor(sf::Color::Blue);
+				if (field[m][n] == 3) rectangle[m][n].setFillColor(sf::Color(255, 192, 203, 255));
+				if (field[m][n] == 4) rectangle[m][n].setFillColor(sf::Color::Yellow);
+				if (field[m][n] == 5) rectangle[m][n].setFillColor(sf::Color(255, 165, 0, 255));
+				if (field[m][n] == 6) rectangle[m][n].setFillColor(sf::Color(165, 42, 42, 255));
+				if (field[m][n] == 7) rectangle[m][n].setFillColor(sf::Color::Magenta);
+				if (field[m][n] == 8) rectangle[m][n].setFillColor(sf::Color::Black);
+				if (field[m][n] == BOMB) rectangle[m][n].setFillColor(sf::Color::Red);
+
+				rectangle[m][n].setPosition((m * 105) + 10, (n * 105) + 10);
+			}
+
+		while (window.isOpen())
+		{
+			sf::Event event;
+			while (window.pollEvent(event))
+			{
+				if (event.type == sf::Event::Closed)
+					window.close();
+			}
+
+			window.clear();
+			for (int m = 0; m < XF; m++)
+				for (int n = 0; n < YF; n++)
+					window.draw(rectangle[m][n]);
+			window.display();
+		}		
+		
 		return 0;
 	}
