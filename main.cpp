@@ -69,6 +69,7 @@
 		sf::RenderWindow window(sf::VideoMode((XF * 100) + (XF * 10), (YF * 100) + (YF * 10)), "SAPER!");
 
 		sf::RectangleShape rectangle[XF][YF];
+		
 		for (int m = 0; m < XF; m++)
 			for (int n = 0; n < YF; n++) {		
 				rectangle[m][n].setSize(sf::Vector2f(100, 100));
