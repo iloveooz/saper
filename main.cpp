@@ -17,6 +17,9 @@
 	
 	int main() {
 		
+		// для дискретизации по клеткам
+		int dsc = 100;
+		
 		// рандомизация
 		srand(time(0));
 				
@@ -84,16 +87,27 @@
 				if (field[m][n] == 8) rectangle[m][n].setFillColor(sf::Color::Black);
 				if (field[m][n] == BOMB) rectangle[m][n].setFillColor(sf::Color::Red);
 
-				rectangle[m][n].setPosition((m * 105) + 10, (n * 105) + 10);
+				rectangle[m][n].setPosition((m * 100) + 10, (n * 100) + 10);
 			}
 
 		while (window.isOpen())
 		{
+			sf::Vector2i pos = sf::Mouse::getPosition(window);
+			
+			int x = pos.x / dsc;
+			int y = pos.y / dsc;
+			
 			sf::Event event;
 			while (window.pollEvent(event))
 			{
 				if (event.type == sf::Event::Closed)
 					window.close();
+					
+				if (event.type == sf::Event::MouseButtonPressed) {
+					if (event.key.code == sf::Mouse::Left) 
+					rectangle[x][y].setFillColor(sf::Color::Cyan);
+				}
+					
 			}
 
 			window.clear();
