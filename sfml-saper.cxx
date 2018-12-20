@@ -6,6 +6,42 @@
 	int main() {
 		srand(time(NULL));
 		
+		sf::RenderWindow app(sf::VideoMode(400, 400), "Miner!");
+		
+		int w = 32;
+		int grid[12][12];
+		
+		// для отображения
+		int sgrid[12][12];
+		
+		sf::Texture t;
+		t.loadFromFile("images/tiles.jpg");
+		
+		sf::Sprite s(t);
+		
+		for (int i = 1; i <= 10; i++) 
+			for (int j = 1; j <= 10; j++) {
+				sgrid[i][j] = 10;
+			}
+		
+		while (app.isOpen()) {
+			sf::Event e;
+			while (app.pollEvent(e)) {
+				if (e.type == sf::Event::Closed)
+					app.close();
+			}
+			app.clear(sf::Color::White);
+			
+			for (int i = 1; i <= 10; i++) 
+				for (int j = 1; j <= 10; j++) {
+					s.setTextureRect(sf::IntRect(sgrid[i][j] * w, 0, w, w));
+					s.setPosition(i * w, j * w);
+					app.draw(s);
+				}
+			
+			app.display();
+			
+		}
 		
 		return 0;
 	}
